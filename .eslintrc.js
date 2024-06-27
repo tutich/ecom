@@ -7,5 +7,6 @@ module.exports = {
     'prettier/prettier': 'error', // enforce prettier formatting
     'simple-import-sort/imports': 'error', // enforce import sorting
     'no-console': 'warn', // optionally warn about console statements
+    'eol-last': ['error', 'always'], // enforce newline at end of file
   },
 };
