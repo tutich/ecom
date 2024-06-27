@@ -1,18 +1,16 @@
 'use client'
 
-
 import React from 'react'
 
 import classes from './index.module.scss'
 import { useFilter } from '../../../_providers/Filter'
-import { Category } from '../../../../payload/payload-types';
-import { Checkbox } from '../../../_components/Checkbox';
-import { HR } from '../../../_components/HR';
-import { RadioButton } from '../../../_components/Radio';
-
+import { Category } from '../../../../payload/payload-types'
+import { Checkbox } from '../../../_components/Checkbox'
+import { HR } from '../../../_components/HR'
+import { RadioButton } from '../../../_components/Radio'
 
 const Filters = ({ categories }: { categories: Category[] }) => {
-  const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter();
+  const { categoryFilters, sort, setCategoryFilters, setSort } = useFilter()
 
   const handleCategories = (categoryId: string) => {
     if (categoryFilters.includes(categoryId)) {
@@ -22,8 +20,7 @@ const Filters = ({ categories }: { categories: Category[] }) => {
     } else {
       setCategoryFilters([...categoryFilters, categoryId])
     }
-      
-   }
+  }
   const handleSort = (value: string) => setSort(value)
   return (
     <div className={classes.filters}>
@@ -32,32 +29,34 @@ const Filters = ({ categories }: { categories: Category[] }) => {
         <div className={classes.category}>
           {categories.map(category => {
             const isSelected = categoryFilters.includes(category.id)
-            return <Checkbox
-              key={category.id}
-              label={category.title}
-              value={category.id}
-              isSelected={isSelected}
-              onClickHandler={handleCategories}
-            />
+            return (
+              <Checkbox
+                key={category.id}
+                label={category.title}
+                value={category.id}
+                isSelected={isSelected}
+                onClickHandler={handleCategories}
+              />
+            )
           })}
         </div>
         <HR className={classes.hr} />
         <h4 className={classes.title}>Sort By</h4>
         <div>
           <RadioButton
-            label='Latest'
-            value='-createdAt'
+            label="Latest"
+            value="-createdAt"
             isSelected={sort === '-createdAt'}
             onRadioChange={handleSort}
-            groupName='sort'
+            groupName="sort"
           />
 
           <RadioButton
-            label='Oldest'
-            value='createdAt'
+            label="Oldest"
+            value="createdAt"
             isSelected={sort === '-createdAt'}
             onRadioChange={handleSort}
-            groupName='sort'
+            groupName="sort"
           />
         </div>
       </div>

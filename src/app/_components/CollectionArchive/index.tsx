@@ -39,9 +39,8 @@ export type Props = {
 }
 
 export const CollectionArchive: React.FC<Props> = props => {
-  const { categoryFilters, sort } = useFilter();
+  const { categoryFilters, sort } = useFilter()
   const {
-
     className,
     limit = 10,
     onResultChange,
@@ -51,15 +50,14 @@ export const CollectionArchive: React.FC<Props> = props => {
     relationTo,
     selectedDocs,
     showPageRange,
-
   } = props
 
   const [results, setResults] = useState<Result>({
     docs: (populateBy === 'collection'
       ? populatedDocs
       : populateBy === 'selection'
-        ? selectedDocs
-        : []
+      ? selectedDocs
+      : []
     )?.map(doc => doc.value),
     hasNextPage: false,
     hasPrevPage: false,
@@ -117,13 +115,13 @@ export const CollectionArchive: React.FC<Props> = props => {
           where: {
             ...(categoryFilters && categoryFilters?.length > 0
               ? {
-                categories: {
-                  in:
-                    typeof categoryFilters === 'string'
-                      ? [categoryFilters]
-                      : categoryFilters.map((cat: string) => cat).join(','),
-                },
-              }
+                  categories: {
+                    in:
+                      typeof categoryFilters === 'string'
+                        ? [categoryFilters]
+                        : categoryFilters.map((cat: string) => cat).join(','),
+                  },
+                }
               : {}),
           },
           limit,
@@ -175,7 +173,6 @@ export const CollectionArchive: React.FC<Props> = props => {
       {!isLoading && error && <div>{error}</div>}
       <Fragment>
         {showPageRange !== false && populateBy !== 'selection' && (
-
           <div className={classes.pageRange}>
             <PageRange
               collection={relationTo}
@@ -184,17 +181,12 @@ export const CollectionArchive: React.FC<Props> = props => {
               totalDocs={results.totalDocs}
             />
           </div>
-
         )}
 
         <div className={classes.grid}>
           {results.docs?.map((result, index) => {
             if (typeof result === 'object' && result !== null) {
-              return (
-
-                <Card doc={result} relationTo={relationTo} showCategories />
-
-              )
+              return <Card doc={result} relationTo={relationTo} showCategories />
             }
 
             return null
@@ -208,7 +200,6 @@ export const CollectionArchive: React.FC<Props> = props => {
             totalPages={results.totalPages}
           />
         )}
-
       </Fragment>
     </div>
   )

@@ -47,7 +47,6 @@ const LoginForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={classes.form}>
-
       <Message error={error} className={classes.message} />
       <Input
         name="email"
@@ -72,7 +71,7 @@ const LoginForm: React.FC = () => {
         disabled={isLoading}
         className={classes.submit}
       />
-      <div className='classes.links'>
+      <div className="classes.links">
         <Link href={`/create-account${allParams}`}>Create an account</Link>
         <br />
         <Link href={`/recover-password${allParams}`}>Recover your password</Link>
