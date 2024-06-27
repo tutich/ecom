@@ -5,7 +5,7 @@ module.exports = {
   plugins: ['prettier', 'simple-import-sort'],
   rules: {
     'prettier/prettier': 0, // enforce prettier formatting
-    'simple-import-sort/imports': error, // enforce import sorting
+    'simple-import-sort/imports': 'error', // enforce import sorting
   
   },
 };
